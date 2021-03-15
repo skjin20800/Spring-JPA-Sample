@@ -31,6 +31,7 @@ public class PostController {
 	private final HttpSession session;
 	private final EntityManager em;
 
+	//인증만 필요
 	@PostMapping("/post")
 	public CommonRespDto<?> save(@RequestBody PostSaveReqDto postSaveReqDto) { // title, content
 		
@@ -44,17 +45,20 @@ public class PostController {
 	}
 	
 
+	//인증만 필요
 	// http://localhost:8080/post/1
 	@GetMapping("/post/{id}")
 	public CommonRespDto<?> findById(@PathVariable Long id){
 		return new CommonRespDto<>(1, "성공", postService.한건찾기(id)); // MessageConverter가 모든 getter를 다호출해서 JSON으로 만들어준다.
 	}
 	
+	//인증만 필요
 	@GetMapping("/post")
 	public CommonRespDto<?> findAll(){
 		return new CommonRespDto<>(1, "성공", postService.전체찾기());
 	}
 	
+	// 인증(Authentication) + 권한(Authorization) 필요
 	@PutMapping("/post/{id}")
 	public CommonRespDto<?> update(@PathVariable Long id, @RequestBody PostUpdateReqDto postUpdateReqDto){
 		
@@ -66,6 +70,7 @@ public class PostController {
 		
 	}
 	
+	// 인증(Authentication) + 권한(Authorization) 필요
 	@DeleteMapping("/post/{id}")
 	public CommonRespDto<?> deleteById(@PathVariable Long id){
 		postService.삭제하기(id);

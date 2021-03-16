@@ -8,8 +8,11 @@
 <c:forEach var="post" items="${posts.content}">
   <div class="card" >
     <div class="card-body">
+    <div class ="d-flex justify-content-between">
       <h4 class="card-title">${post.title}</h4>
-      <a href="/post/${post.id}" class="btn btn-primary">상세보기</a>
+      <p>작성자: ${post.user.username }</p>
+      </div>
+      <a href="/post/${post.id}"class="btn btn-primary">상세보기</a>
     </div>
   </div>
   <br>

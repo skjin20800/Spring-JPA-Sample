@@ -1,6 +1,9 @@
 package com.cos.blog.web;
 
+import javax.validation.Valid;
+
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,8 +34,8 @@ public class ReplyController {
 	}
 	
 	@PostMapping("/reply")
-	public CMRespDto<?> save(@RequestBody ReplyReqDto replyReqDto,
-			@AuthenticationPrincipal PrincipalDetails principalDetails) {
+	public CMRespDto<?> save(@Valid @RequestBody ReplyReqDto replyReqDto,
+			@AuthenticationPrincipal PrincipalDetails principalDetails, BindingResult bindingResult) {
 		System.out.println("실행됨"+ replyReqDto);
 		
 		Reply reply = replyReqDto.toEntity();

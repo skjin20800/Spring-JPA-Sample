@@ -18,7 +18,9 @@ public class ReplyService {
 	
 	public int 삭제하기(int id, int userId) {
 		
-		Reply replyEntity = replyRepository.findById(id).get();
+		Reply replyEntity = replyRepository.findById(id).orElseThrow(()->{
+			return new IllegalArgumentException("id를 찾을 수 없습니다.");	
+		});
 		
 		if(replyEntity.getUser().getId()==userId) {
 			replyRepository.deleteById(id);
@@ -31,7 +33,9 @@ public class ReplyService {
 	public int 댓글쓰기(Reply reply,ReplyReqDto replyReqDto) {
 		
 		int postId = Integer.parseInt(replyReqDto.getPostId());
-		reply.setPost(postRepository.findById(postId).get()); 
+		reply.setPost(postRepository.findById(postId).orElseThrow(()->{
+			return new IllegalArgumentException("id를 찾을 수 없습니다.");	
+		})); 
 		
 		Reply replyEntity = replyRepository.save(reply);
 		

@@ -22,7 +22,9 @@ public class ReplyControllerTest {
 	
 	@GetMapping("/test/post/{id}")
 	public CMRespDto<?> updateForm(@PathVariable int id) {
-		Post postEntity= postRepository.findById(id).get();
+		Post postEntity= postRepository.findById(id).orElseThrow(()->{
+			return new IllegalArgumentException("id를 찾을 수 없습니다.");	
+		});
 		
 		return new CMRespDto<>(1,postEntity);	
 	}

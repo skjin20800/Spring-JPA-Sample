@@ -54,7 +54,9 @@ public class JwtVerifyFilter extends BasicAuthenticationFilter {
 		DecodedJWT dJwt = JWT.require(Algorithm.HMAC512("홍길동")).build().verify(token);
 		Long userId = dJwt.getClaim("userId").asLong();
 		
-		User userEntity = userRepository.findById(userId).get();
+		User userEntity = userRepository.findById(userId).orElseThrow(()->{
+			return new IllegalArgumentException("id를 찾을 수 없습니다.");	
+		});
 		PrincipalDetails principalDetails = new PrincipalDetails(userEntity);
 		
 		

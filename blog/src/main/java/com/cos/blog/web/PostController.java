@@ -1,5 +1,7 @@
 package com.cos.blog.web;
 
+import javax.validation.Valid;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -7,6 +9,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,7 +23,7 @@ import com.cos.blog.domain.post.Post;
 import com.cos.blog.service.PostService;
 import com.cos.blog.web.dto.CMRespDto;
 import com.cos.blog.web.post.dto.PostSaveReqDto;
-import com.cos.blog.web.post.dto.PostUpdateReqDto;
+import com.cos.blog.web.post.dto.PostSearchReqDto;
 
 import lombok.RequiredArgsConstructor;
 
@@ -30,19 +33,18 @@ public class PostController {
 	private final PostService postService;
 	
 	@GetMapping("/")
-	public String findAll(Model model, @PageableDefault(sort = "id", direction = Sort.Direction.DESC , size = 5)Pageable pageable,
-			@AuthenticationPrincipal PrincipalDetails principalDetails) {
+	public String findAll(Model model, @PageableDefault(sort = "id", direction = Sort.Direction.DESC , size = 5)Pageable pageable) {
 		//jpa는 id로 OrderBy한다 , 방향 DESC설정, 페이지당 5개 나오게 설정
-		
-		System.out.println("누구로 로그인 됐을까?");
 		Page<Post> posts = postService.전체찾기(pageable);
 		model.addAttribute("posts",posts);
 		return "post/list";
 	}
+	
 	@GetMapping("/post/saveForm")
 	public String saveForm() {
 		return "post/saveForm";
 	}
+
 	
 	@GetMapping("/post/{id}/updateForm")
 	public String updateForm(@PathVariable int id, Model model) {
@@ -53,7 +55,7 @@ public class PostController {
 	
 	@PutMapping("/post/{id}/update")
 	public @ResponseBody CMRespDto<?> update(@PathVariable int id,
-			@RequestBody PostSaveReqDto postSaveReqDto, Model model) {
+			@Valid @RequestBody PostSaveReqDto postSaveReqDto, Model model, BindingResult bindingResult) {
 		Post postEntity= postService.글수정(id, postSaveReqDto);
 		model.addAttribute("post",postEntity);
 		return new CMRespDto<>(1,null);	
@@ -75,7 +77,7 @@ public class PostController {
 	
 	
 	@PostMapping("/post")
-	public String save(PostSaveReqDto postSaveReqDto, @AuthenticationPrincipal PrincipalDetails principalDetails) {
+	public String save(@Valid PostSaveReqDto postSaveReqDto, @AuthenticationPrincipal PrincipalDetails principalDetails, BindingResult bindingResult) {
 		Post post = postSaveReqDto.toEntity();
 		post.setUser(principalDetails.getUser());
 		Post postEntity = postService.글쓰기(post);
@@ -85,7 +87,15 @@ public class PostController {
 		}else {
 			return "redirect:/";
 		}
-		
 	}
 	
+	@PostMapping("/post/search")
+	public String search(@Valid PostSearchReqDto postSearchReqDto, Model model,
+			@PageableDefault(sort = "id", direction = Sort.Direction.DESC , size = 5)Pageable pageable
+			,BindingResult bindingResult) {
+				
+		Page<Post> posts = postService.검색하기(postSearchReqDto, pageable);
+		model.addAttribute("posts",posts);
+		return "post/list";
+	}
 }

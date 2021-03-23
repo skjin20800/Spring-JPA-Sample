@@ -38,7 +38,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		.and()
 		.formLogin() //x-www-form-urlencoded
 		.loginPage("/auth/loginForm") //로그인 주소
-		.loginProcessingUrl("/"); //Spring Security가 Post방식으로  "/login" 주소가 들어오면 낚아챈다
+		.loginProcessingUrl("/login") //Spring Security가 Post방식으로  "/login" 주소가 들어오면 낚아챈다
+		.defaultSuccessUrl("/");
+		//OAuth2.0과 CORS는 나중에
 		
 		
 	}

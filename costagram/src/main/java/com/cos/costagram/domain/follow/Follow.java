@@ -18,27 +18,29 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
-@Data
-@NoArgsConstructor
-@AllArgsConstructor 
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+@Entity
 public class Follow {
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
 	@JoinColumn(name = "fromUserId")
 	@ManyToOne
-	private User fromUser; // ~~로 부터
+	private User fromUser;  // ~~로부터  (1)
 	
 	@JoinColumn(name = "toUserId")
 	@ManyToOne
-	private User toUser; // ~~ 를 
+	private User toUser; // ~~를  (3)
 	
 	@CreationTimestamp
 	private Timestamp createDate;
-	
-	
 }
+
+
+
+
+

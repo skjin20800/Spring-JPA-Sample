@@ -7,31 +7,33 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cos.costagram.service.AuthService;
 import com.cos.costagram.utils.Script;
-import com.cos.costagram.web.auth.dto.UserJoinReqDto;
+import com.cos.costagram.web.dto.auth.UserJoinReqDto;
 
 import lombok.RequiredArgsConstructor;
+
 
 // 시작주소 : /auth
 @RequiredArgsConstructor
 @Controller
 public class AuthController {
-	
+
 	private final AuthService authService;
 	
-	@GetMapping("/auth/loginForm")
-	public String loginForm() {
-		return "auth/loginForm";
-	}
-	
-	@GetMapping("/auth/joinForm")
-	public String joinForm() {
-		return "auth/joinForm";
-	}
-	
-	@PostMapping("/auth/join")
-	@ResponseBody
-	public String join(UserJoinReqDto userJoinReqDto) {
-		authService.회원가입(userJoinReqDto.toEntity());
-		return Script.href("성공", "/auth/loginForm");
-	}
+	 @GetMapping("/auth/loginForm")
+	 public String loginForm() {
+		 return "auth/loginForm";
+	 }
+	 
+	 @GetMapping("/auth/joinForm")
+	 public String joinForm() {
+		 return "auth/joinForm";
+	 }
+
+	 @PostMapping("/auth/join")
+	 public @ResponseBody String join(UserJoinReqDto userJoinReqDto) {
+		 authService.회원가입(userJoinReqDto.toEntity());
+		 return Script.href("성공", "/auth/loginForm");
+	 }
 }
+
+

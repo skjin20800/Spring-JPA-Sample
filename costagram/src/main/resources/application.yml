@@ -1,4 +1,3 @@
-
 server:
   port: 8080
   servlet:
@@ -22,9 +21,9 @@ spring:
   jpa:
     open-in-view: true
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
       naming:
-        physical-strategy: org.hibernate.boot.model.nami ng.PhysicalNamingStrategyStandardImpl
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
     show-sql: true
       
   servlet:
@@ -37,5 +36,6 @@ spring:
       name: test
       password: 1234   
 
+
 file:
-  path: D:/Programming/lastwork/costagram/src/main/resources/upload/
+  path: C:/reactwork/costagram/src/main/resources/upload/

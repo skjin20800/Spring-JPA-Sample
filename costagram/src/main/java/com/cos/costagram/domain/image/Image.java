@@ -23,13 +23,12 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
-@Data
-@NoArgsConstructor
-@AllArgsConstructor 
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+@Entity
 public class Image {
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -38,20 +37,22 @@ public class Image {
 	
 	@ManyToOne
 	@JoinColumn(name = "userId")
-	private User user;	
+	private User user;
 	
 	@OneToMany(mappedBy = "image")
 	private List<Tag> tags;
 	
 	@OneToMany(mappedBy = "image")
-	private List<Likes> likes; //A이미지에 홍길동, 장보고, 임꺽정 좋아요. (고소영)
-	
-	// comment(댓글)
+	private List<Likes> likes; // A이미지에 홍길동, 장보고, 임꺽정 좋아요.   (고소영)
+
 	@OneToMany(mappedBy = "image")
-	private List<Comment> comments; //A이미지에 홍길동, 장보고, 임꺽정 좋아요. (고소영)
+	private List<Comment> comments;
 	
 	@CreationTimestamp
 	private Timestamp createDate;
-	
-	
 }
+
+
+
+
+

@@ -24,7 +24,7 @@ spring:
     hibernate:
       ddl-auto: update
       naming:
-        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+        physical-strategy: org.hibernate.boot.model.nami ng.PhysicalNamingStrategyStandardImpl
     show-sql: true
       
   servlet:

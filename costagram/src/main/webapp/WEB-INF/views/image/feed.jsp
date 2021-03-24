@@ -11,7 +11,7 @@
 				<!--리스트 아이템 헤더영역-->
 				<div class="sl__item__header">
 					<div>
-						<img src="images/profile.jpeg" alt="">
+						<img src="/images/profile.jpeg" alt="">
 						<svg viewbox="0 0 110 110">
                                 <circle cx="55" cy="55" r="53" />
                             </svg>
@@ -22,7 +22,7 @@
 
 				<!--게시물이미지 영역-->
 				<div class="sl__item__img">
-					<img src="images/home3.jpg" alt="">
+					<img src="/images/home3.jpg" alt="">
 				</div>
 
 				<!--게시물 내용 + 댓글 영역-->
@@ -39,6 +39,12 @@
 					<span class="like"><b>1</b>likes</span>
 					<!--좋아요end-->
 
+					<!--태그박스-->
+					<div class="sl__item__contents__tags">
+						<p>#운동 #공부 #음식</p>
+					</div>
+					<!--태그박스end-->
+					
 					<!--게시글내용-->
 					<div class="sl__item__contents__content">
 						<p>내용내용내용내용</p>
@@ -48,7 +54,7 @@
 					<!--댓글박스-->
 					<div>
 						<div class="sl__item__contents__comment">
-							<p><b>아이디 : </b>내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용</p>
+							<p><b>아이디 : </b>용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용</p>
 							<button>
 								<i class="fas fa-times"></i>
 							</button>

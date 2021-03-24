@@ -13,6 +13,7 @@ import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import com.cos.costagram.domain.comment.Comment;
 import com.cos.costagram.domain.likes.Likes;
 import com.cos.costagram.domain.tag.Tag;
 import com.cos.costagram.domain.user.User;
@@ -46,7 +47,11 @@ public class Image {
 	private List<Likes> likes; //A이미지에 홍길동, 장보고, 임꺽정 좋아요. (고소영)
 	
 	// comment(댓글)
+	@OneToMany(mappedBy = "image")
+	private List<Comment> comments; //A이미지에 홍길동, 장보고, 임꺽정 좋아요. (고소영)
 	
 	@CreationTimestamp
 	private Timestamp createDate;
+	
+	
 }

@@ -21,19 +21,39 @@
             <!--유저정보 및 사진등록 구독하기-->
             <div class="profile-right">
                 <div class="name-group">
-                    <h2>There Programing</h2>
-                    <button class="cta blue" onclick="location.href='/image/upload'">사진등록</button>
-                    <button class="cta">구독하기</button>
+                    <h2>${dto.user.username}</h2>
+                    <c:choose>
+                    <c:when test = "${principal.user.id == dto.user.id}">
+                    <button class="cta" onclick="location.href='/image/upload'">사진등록</button>
                     <button class="modi" onclick="popup('.modal-info')"><i class="fas fa-cog"></i></button>
+                    </c:when>
+                    <c:otherwise>
+                    <c:choose>
+                    <c:when test="${dto.followState}">
+                    <button class="cta blue">구독취소</button>
+                    </c:when>
+                    <c:otherwise>
+                     <button class="cta">구독하기</button>
+                    </c:otherwise>
+                    </c:choose>
+                    
+                    
+                    </c:otherwise>
+                    </c:choose>
+                    
                 </div>
                 <div class="follow">
                     <ul>
-                        <li><a href="">게시물<span>6</span></a> </li>
-                        <li><a href="" id="subscribeBtn">구독정보<span>106</span></a> </li>
+                        <li><a href="">게시물<span>${dto.imageCount}</span></a> </li>
+                        <li><a href="" id="subscribeBtn">구독정보<span>${dto.followCount}</span></a> </li>
                     </ul>
                 </div>
                 <div class="state">
-                    <h4>겟인데어</h4>
+                    <h4>${dto.user.bio}
+                    ${dto.user.website}
+                     
+                    </h4>
+            
                 </div>
             </div>
             <!--유저정보 및 사진등록 구독하기-->
@@ -51,42 +71,16 @@
                 <div class="tab-1-content-inner">
                     
                     <!--아이템들-->
+                    <c:forEach var="image"  items= "${dto.user.images}">
                     <div class="img-box">
-                        <a href=""><img src="/images/profile.jpeg" alt=""></a>
+                        <a href="">
+                        <img src="/images/profile.jpeg" alt=""></a>
                         <div class="comment">
-                            <a href="#a" class=""><i class="fas fa-heart"></i><span>36</span></a>
+                            <a href="#a" class=""><i class="fas fa-heart"></i><span>${image.likeCount}</span></a>
                         </div>
                     </div>
-                    <div class="img-box">
-                        <a href=""><img src="/images/profile.jpeg" alt=""></a>
-                        <div class="comment">
-                            <a href="#a" class=""><i class="fas fa-heart"></i><span>36</span></a>
-                        </div>
-                    </div>
-                    <div class="img-box">
-                        <a href=""><img src="/images/profile.jpeg" alt=""></a>
-                        <div class="comment">
-                            <a href="#a" class=""><i class="fas fa-heart"></i><span>36</span></a>
-                        </div>
-                    </div>
-                    <div class="img-box">
-                        <a href=""><img src="/images/profile.jpeg" alt=""></a>
-                        <div class="comment">
-                            <a href="#a" class=""><i class="fas fa-heart"></i><span>36</span></a>
-                        </div>
-                    </div>
-                    <div class="img-box">
-                        <a href=""><img src="/images/profile.jpeg" alt=""></a>
-                        <div class="comment">
-                            <a href="#a" class=""><i class="fas fa-heart"></i><span>36</span></a>
-                        </div>
-                    </div>
-                    <div class="img-box">
-                        <a href=""><img src="/images/profile.jpeg" alt=""></a>
-                        <div class="comment">
-                            <a href="#a" class=""><i class="fas fa-heart"></i><span>36</span></a>
-                        </div>
-                    </div>
+                    </c:forEach>
+                    
                     <!--아이템들end-->
                 </div>
             </div>

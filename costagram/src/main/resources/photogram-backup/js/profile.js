@@ -1,7 +1,28 @@
+
+// 구독 정보 보는 함수
 document.querySelector("#subscribeBtn").onclick = (e) => {
   e.preventDefault();
   document.querySelector(".modal-follow").style.display = "flex";
+
+//ajax 통신후에 json 리턴 -> javascript 오브젝트 변경 => for문 돌면서 뿌리기
+let item = makeSubscribeInfo();
+$("#follow_list").append(item);
 };
+
+function makeSubscribelInfo(){
+	let item= `     <div class="follower__item">`;
+	item +=`<div class="follower__img"><img src="/images/profile.jpeg" alt=""></div>`;
+	item +=` <div class="follower__text">`;
+	item +=`   <h2>아이디</h2>`;
+	item +=`</div>`;
+	item +=`  <div class="follower__btn"><button onclick="clickFollow(this)">구독취소</button></div>`;
+	item +=`</div>`;
+	
+	return item;
+}
+
+
+
 function closeFollow() {
   document.querySelector(".modal-follow").style.display = "none";
 }
@@ -28,6 +49,9 @@ document.querySelector(".modal-image").addEventListener("click", (e) => {
     document.querySelector(".modal-image").style.display = "none";
   }
 });
+
+
+
 function clickFollow(e) {
   console.log(e);
   let _btn = e;

@@ -37,23 +37,6 @@ function addComment(postId, username) {
   `;
   commentList.insertAdjacentHTML("afterbegin", content);
   commentInput.value = "";
-  // 서버에서 데이터 가져올때
-  // fetch()
-  //   .then()
-  //   .then((data) => {
-  //     let content = `
-  //     <div class="sl__item__contents__comment">
-  //       <p>
-  //         <b>${data.user.username} : </b>
-  //         ${data.comment}
-  //       </p>
-  //       <button onClick="deleteComment(${data.commentId})"><i class="fas fa-times"></i></button>
-  //     </div>
-  //     `;
-  //     // 성공시
-  //     commentList.insertAdjacentElement("afterbegin", content);
-  //     commentInput.value = "";
-  //   });
 }
 
 function deleteComment(commentId) {

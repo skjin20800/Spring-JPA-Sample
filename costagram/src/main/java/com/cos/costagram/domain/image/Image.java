@@ -55,8 +55,8 @@ public class Image {
 	@Transient // 칼럼이 만들어지지 않는다.
 	private int likeCount;
 	
-	@Transient // 칼럼이 만들어지지 않는다.
-	private int likeState;
+	@Transient
+	private boolean likeState;
 }
 
 

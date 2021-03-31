@@ -76,7 +76,6 @@ function makeSubscribeInfo(u) {
 
 
 function postUnFollow(id){
-
       $.ajax({
 		type: "DELETE",
 		url: "/follow/"+id,
@@ -91,21 +90,17 @@ function postUnFollow(id){
 			cardGrid.append(newDiv);
 			$("#btn-UF"+id).remove();
 		}else{
-			
 		}
 	});
-	
 }
 
 
 function postFollow(id){
-
       $.ajax({
 		type: "POST",
 		url: "/follow/"+id,
 		dataType:"json"
 	}).done((res)=>{
-		console.log(res);
 		if(res.statusCode === 1){
 			var cardGrid = $("#div-F"+id);
 			var newDiv = document.createElement("div");
@@ -120,9 +115,31 @@ function postFollow(id){
 	
 }
 
-
-
+function mainFollow(userId){
+	let text = $(`#followBox button`).text();
 	
+	if(text === "구독취소"){
+		$.ajax({
+			type: "DELETE",
+			url: "/follow/"+userId,
+			dataType: "json"
+		}).done(res=>{
+			alert("취소완료");
+			$(`#followBox button`).text("구독하기");
+			$(`#followBox button`).toggleClass("blue");
+		});
+	}else{
+		$.ajax({
+			type: "POST",
+			url: "/follow/"+userId,
+			dataType: "json"
+		}).done(res=>{
+			alert("구독완료");
+			$(`#followBox button`).text("구독취소");
+			$(`#followBox button`).addClass("blue");
+		});
+	}
+}
 
 
 

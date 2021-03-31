@@ -22,7 +22,7 @@
             
             <!--유저정보 및 사진등록 구독하기-->
             <div class="profile-right">
-                <div class="name-group">
+                <div class="name-group" id = "followBox">
                     <h2>${dto.user.username}</h2>
                     <c:choose>
                     <c:when test = "${principal.user.id == dto.user.id}">
@@ -32,14 +32,12 @@
                     <c:otherwise>
                     <c:choose>
                     <c:when test="${dto.followState}">
-                    <button class="cta blue">구독취소</button>
+                    <button class="cta blue" onclick="mainFollow(${dto.user.id})">구독취소</button>
                     </c:when>
                     <c:otherwise>
-                     <button class="cta">구독하기</button>
+                     <button class="cta" onclick="mainFollow(${dto.user.id})">구독하기</button>
                     </c:otherwise>
                     </c:choose>
-                    
-                    
                     </c:otherwise>
                     </c:choose>
                     
@@ -78,7 +76,6 @@
                         <a href="">
                         <img src="/upload/${image.postImageUrl}" alt=""></a>
                         <a href="">
-                        <img src="/upload/fc3de87a-64a9-40ee-ba99-eb440a6538cf_iu.jpg" alt=""></a>
                         <div class="comment">
                             <a href="#a" class=""><i class="fas fa-heart"></i><span>${image.likeCount}</span></a>
                         </div>

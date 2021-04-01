@@ -24,39 +24,40 @@
 
 					<!--게시물이미지 영역-->
 					<div class="sl__item__img">
-						<img src="/upload/${image.postImageUrl}"  alt="" />
+						<img src="/upload/${image.postImageUrl}" alt="" />
 					</div>
 
 					<!--게시물 내용 + 댓글 영역-->
 					<div class="sl__item__contents">
 						<!-- 하트모양 버튼 박스 -->
 						<div class="sl__item__contents__icon">
-							<button onclick="clickBtn()">
-							<c:choose>
+								<c:choose>					
 									<c:when test="${image.likeState}">
-										<i class="fas fa-heart active"></i>
+										<button onclick="likeOrUnLike(${image.id})">
+											<i class="fas fa-heart active"></i>
+										</button>
 									</c:when>
 									<c:otherwise>
-										<i class="far fa-heart"></i>
+										<button onclick="likeOrUnLike(${image.id})">
+											<i class="far fa-heart"></i>
+										</button>
 									</c:otherwise>
 								</c:choose>
 								
-							</button>
+							
 						</div>
 						<!-- 하트모양 버튼 박스 end -->
 
 						<!--좋아요-->
-						<c:set var="likeState" value="false" />
-						<span class="like"><b>${image.likeCount}</b>likes</span>						
-							<c:out value="${likeState}" />
+						<span class="like"><b id="like_count-${image.id}">${image.likeCount}</b>likes</span>
 						<!--좋아요end-->
 
 						<!--태그박스-->
 						<div class="sl__item__contents__tags">
 							<p>
-							<c:forEach var="tag" items="${image.tags}">
-							#${tag.name} 
-							</c:forEach>
+								<c:forEach var="tag" items="${image.tags}">
+									#${tag.name} 
+								</c:forEach>
 							</p>
 						</div>
 						<!--태그박스end-->

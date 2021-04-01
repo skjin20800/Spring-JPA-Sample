@@ -24,6 +24,8 @@ public class ImageController {
 	private final ImageService imageService;
 	private final LikesService likesService;
 	
+	
+	
 	@GetMapping({"/", "/image/feed"})
 	public String feed(Model model, @AuthenticationPrincipal PrincipalDetails principalDetails) {
 		
@@ -36,7 +38,8 @@ public class ImageController {
 	}
 	
 	@GetMapping("/image/explore")
-	public String explore() {
+	public String explore(Model model, @AuthenticationPrincipal PrincipalDetails principalDetails) {
+		model.addAttribute("images", imageService.인기사진(principalDetails.getUser().getId()));
 		return "image/explore";
 	}
 	

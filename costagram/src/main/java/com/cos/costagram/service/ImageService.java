@@ -29,6 +29,12 @@ public class ImageService {
 	@Value("${file.path}") //yml에 적어놓은 file.path의 경로 가져오기
 	private String uploadFolder;
 	
+	@Transactional(readOnly = true)
+	public List<Image> 인기사진(int principalId){
+		return imageRepository.mExplore(principalId);
+	}
+
+	
 	
 	public List<Image> 피드이미지(int principalId){
 		

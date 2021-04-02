@@ -57,7 +57,8 @@ document.querySelector(".modal-image").addEventListener("click", (e) => {
 
 function makeSubscribeInfo(u) {
 	let item = `<div class="follower__item" id="follow-${u.userId}">`;
-	item += `<div class="follower__img"><img src="/images/profile.jpeg" alt="">`;
+	item += `<div class="follower__img">`;
+	item += `<img src="/upload/${u.profileImageUrl}" alt=""  onerror="this.src='/images/profile.jpeg'"/>`;
 	item += `</div>`;
 	item += `<div class="follower__text">`;
 	item += `<h2>${u.username}</h2>`;

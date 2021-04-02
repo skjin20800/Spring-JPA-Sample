@@ -12,7 +12,7 @@
 
                 <!--프로필셋팅 아이디영역-->
                 <div class="content-item__01">
-                    <div class="item__img"><img src="/images/profile.jpeg" alt=""></div>
+                    <div class="item__img"><img src="/upload/${principal.user.profileImageUrl}" alt="" onerror="this.src='/images/profile.jpeg'"></div>
                     <div class="item__username">
                         <h2>${user.username}</h2>
                     </div>
@@ -24,13 +24,13 @@
                     <div class="content-item__02">
                         <div class="item__title">이름</div>
                         <div class="item__input">
-                            <input type="text" id="username" name="username" value="${user.username}" />
+                            <input type="text" id="username" name="username" value="${user.name}" readonly = "readonly"/>
                         </div>
                     </div>
                     <div class="content-item__03">
-                        <div class="item__title">사용자 이름</div>
+                        <div class="item__title">유저 네임</div>
                         <div class="item__input">
-                            <input type="text" id="name" name="name" value="${user.name}" />
+                            <input type="text" id="name" name="name" value="${user.username}"  readonly = "readonly"/>
                         </div>
                     </div>
                     <div class="content-item__04">
@@ -55,7 +55,7 @@
                     <div class="content-item__07">
                         <div class="item__title">이메일</div>
                         <div class="item__input">
-                            <input type="text" id="email" name="email" value="${user.email}" />
+                            <input type="text" id="email" name="email" value="${user.email}"  readonly = "readonly"/>
                         </div>
                     </div>
                     <div class="content-item__08">

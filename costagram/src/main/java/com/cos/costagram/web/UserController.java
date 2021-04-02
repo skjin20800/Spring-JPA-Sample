@@ -55,7 +55,6 @@ public class UserController {
 	@PutMapping("/user/profileUpdate")
 	@ResponseBody
 	public CMRespDto<?> profileUpdate(Model model, @AuthenticationPrincipal PrincipalDetails principalDetails,@RequestBody UserProfileUpdateReqDto userProfileUpdateReqDto) {
-		System.out.println("들온다");
 		User user = userService.수정하기(principalDetails.getUser().getId(),userProfileUpdateReqDto );
 		model.addAttribute("user", user);
 		return new CMRespDto<>(1,null);	

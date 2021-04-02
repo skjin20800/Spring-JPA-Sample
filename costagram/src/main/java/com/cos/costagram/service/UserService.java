@@ -54,8 +54,7 @@ public class UserService {
 		userEntity.setEmail(userProfileUpdateReqDto.getEmail());
 		userEntity.setPhone(userProfileUpdateReqDto.getPhone());
 		userEntity.setGender(userProfileUpdateReqDto.getGender());
-		
-				
+			
 		return userEntity;
 	} // 서비스 종료시 영속성 컨텍스트에 영속화 되어있는 모든 객체의 변경을 감지하여 변경된 아이들을 flush 한다. (commit) = 더티체킹
 	

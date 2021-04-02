@@ -12,7 +12,7 @@
 		<!--유저이미지-->
 		<div class="profile-left">
 			<div class="profile-img-wrap story-border" onclick="popup('.modal-image')">
-				<img src="/images/profile.jpeg" alt="">
+				<img src="/upload/${dto.user.profileImageUrl}" alt=""  onerror="this.src='/images/profile.jpeg'"/>
 				<svg viewbox="0 0 110 110">
                         <circle cx="55" cy="55" r="53" />
                     </svg>
@@ -22,9 +22,8 @@
 
 		<!--유저정보 및 사진등록 구독하기-->
 		<div class="profile-right">
-			<div class="name-group">
+			<div class="name-group" id =followBox>
 				<h2>${dto.user.username}</h2>
-
 				<c:choose>
 					<c:when test="${principal.user.id == dto.user.id}">
 						<button class="cta" onclick="location.href='/image/upload'">사진등록</button>
@@ -35,10 +34,10 @@
 					<c:otherwise>
 						<c:choose>
 							<c:when test="${dto.followState}">
-								<button class="cta blue" onclick="followOrUnFollowProfile(${dto.user.id})"  id="follow_profile_btn">구독취소</button>
+								<button class="cta blue" onclick="mainFollow(${dto.user.id})"  id="follow_profile_btn">구독취소</button>
 							</c:when>
 							<c:otherwise>
-								<button class="cta" onclick="followOrUnFollowProfile(${dto.user.id})" id="follow_profile_btn">구독하기</button>
+								<button class="cta" onclick="mainFollow(${dto.user.id})" id="follow_profile_btn">구독하기</button>
 							</c:otherwise>
 						</c:choose>
 

@@ -17,10 +17,19 @@ function feedLoad(){
 
 feedLoad();
 
-$(window).scroll(()=>{
-   console.log("스크롤 발생함");
-   // page를 ++
-   // feedLoad();
+$(window).scroll(() => {
+  
+	console.log("scrollTop", $(window).scrollTop());
+	console.log("document height", $(document).height());
+	console.log("window height", $(window).height());
+	
+	let checkNum = $(window).scrollTop() - ($(document).height() - $(window).height());
+	
+	// 근사치 계산
+	if(checkNum < 1 && checkNum > -1){
+		page++;
+		feedLoad();
+	}
 });
 
 function feedItem(image){

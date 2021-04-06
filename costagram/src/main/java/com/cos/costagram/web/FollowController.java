@@ -20,7 +20,7 @@ public class FollowController {
 
 	private final FollowService followService;
 	
-	
+
 	
 	@PostMapping("/follow/{toUserId}") // /follow/3
 	public CMRespDto<?> follow(@AuthenticationPrincipal PrincipalDetails principalDetails, @PathVariable int toUserId) {
@@ -34,6 +34,5 @@ public class FollowController {
 		return new CMRespDto<>(1, result);
 	}
 }
-//
 
 

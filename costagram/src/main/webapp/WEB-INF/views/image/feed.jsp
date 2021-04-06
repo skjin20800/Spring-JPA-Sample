@@ -4,8 +4,8 @@
 <main class="main">
 	<section class="container">
 		<!--전체 리스트 시작-->
-		<article class="story-list" id ="feed_list">
-
+		<article class="story-list" id="feed_list">
+			
 
 
 			
@@ -13,6 +13,7 @@
 	</section>
 </main>
 <script src="/js/image.js"></script>
+<script src="/js/comment.js"></script>
 <script src="/js/like.js"></script>
 </body>
 </html>

@@ -12,15 +12,13 @@ public class ImageReqDto {
 
 	private MultipartFile file;
 	private String caption;
-	private String tags; // #태그1 #태그2
+	private String tags;
 	
 	public Image toEntity(String postImageUrl, User userEntity) {
 		return Image.builder()
 				.caption(caption)
 				.postImageUrl(postImageUrl)
 				.user(userEntity)
-				.build();				
+				.build();
 	}
-	
-	
 }

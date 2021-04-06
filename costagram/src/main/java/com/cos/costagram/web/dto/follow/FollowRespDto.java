@@ -6,14 +6,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
-@NoArgsConstructor
+
 @AllArgsConstructor
+@NoArgsConstructor
+@Data
 public class FollowRespDto {
 	private int userId;
 	private String username;
 	private String profileImageUrl;
-	private BigInteger followState;//boolean 값은 BigInteger로 받아야함.
+	private BigInteger followState;
 	private BigInteger equalState;
-
 }

@@ -18,17 +18,16 @@
                 <!--사진업로드 로고 end-->
                 
                 <!--사진업로드 Form-->
-                <form class="upload-form" method= "POST" enctype ="multipart/form-data" action="/image">
-                    <input type="file" name="file" accept="image/*" id="input_img"/>
+                <form class="upload-form" method="POST" enctype="multipart/form-data" action="/image">
+                    <input type="file" name="file"  accept="image/*" id="input_img" />
                     
                     <div class="upload-img">
-                        <img src="/images/profile.jpeg" alt="" id="img_preview"/>
+                        <img src="/images/profile.jpeg" alt="" id="img_preview" />
                     </div>
-                    
                     
                     <!--사진설명 + 업로드버튼-->
                     <div class="upload-form-detail">
-                    	<input type="text" placeholder="누워있는중" name="caption">
+                   		 <input type="text" placeholder="사진설명" name="caption">
                         <input type="text" placeholder="#태그" name="tags">
                         <button class="cta blue">업로드</button>
                     </div>
@@ -40,7 +39,8 @@
             <!--사진업로드 박스 end-->
         </main>
 
-<script>
+
+	<script>
 		$("#input_img").on("change", (e) => {
 			let files = e.target.files;
 			let filesArr = Array.prototype.slice.call(files);
@@ -60,5 +60,5 @@
 			});
 		});
 	</script>
-
+	
     <%@ include file="../layout/footer.jsp" %>

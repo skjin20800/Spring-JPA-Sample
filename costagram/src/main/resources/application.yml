@@ -35,21 +35,6 @@ spring:
     user:
       name: test
       password: 1234   
-    oauth2:
-      client:
-        registration:
-          facebook: #Oauth할 사이트 이름 적기
-            client-id: 1757399057764659
-            client-secret: a4111fddd8056a7bd2420e941956a073
-            scope: # 페이스북 에서 제공해주는 정보가 뭔지 보는것
-            - email
-            - public_profile
-  
 
 file:
   path: D:/Programming/lastwork/costagram/src/main/resources/upload/
-  
-
-  
-  
-

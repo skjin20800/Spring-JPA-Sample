@@ -28,12 +28,13 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(
 		name="follow",
-		uniqueConstraints= {
-				@UniqueConstraint(
-						name = "follow_uk",
-						columnNames= {"fromUserId","toUserId"})
+		uniqueConstraints={
+			@UniqueConstraint(
+				name = "follow_uk",
+				columnNames={"fromUserId","toUserId"}
+			)
 		}
-		)
+	)
 public class Follow {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
